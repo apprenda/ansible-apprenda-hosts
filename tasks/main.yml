@@ -1,0 +1,16 @@
+---
+# tasks file for apprenda
+- name: Perform {{ action }} against Apprenda Host {{ host_name }}
+  apprenda_hosts:
+    apprenda_url: "{{ apprenda_url }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
+    tenant: "{{ tenant }}"
+    action: "{{ action }}"
+    host_name: "{{ host_name }}"
+    host_state: "{{ host_state | default(None) }}"
+    reason: "{{ reason | default(None) }}"
+  register: output
+- name: Display Result
+  debug:
+    var: output
